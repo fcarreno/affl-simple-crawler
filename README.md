@@ -4,7 +4,7 @@
 
 ### Accepts several command line parameters to drive actions/behavior
 
-* `dataSource`: String (`reqres`|`affluent`) - The destination from which data will be retrieved.
+* `dataSource`: String (`reqres`|`affluent`) - The source from which data will be retrieved.
 Data Sources are pre-configured as part of the utility, so a different value than the supported ones will result in no-op.
 
 
