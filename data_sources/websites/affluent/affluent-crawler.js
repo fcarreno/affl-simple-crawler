@@ -11,7 +11,7 @@ class AffluentCrawler {
         this.browser = browser; // accepting an instance of browser (puppeteer) already launched (e.g.: if available from other crawler processes...)
     }
 
-    // No exhaustive parameter validation is included (e.g.: crawlParams.pages as integer, etc)
+    // NOTE: No exhaustive parameter validation is included (e.g.: crawlParams.pages as integer, dataRangeFrom & To expected format ,etc)
     async crawl(resourceType, crawlParams){
 
         let crawlResult;
@@ -53,7 +53,7 @@ class AffluentCrawler {
 
     async _getBrowser(){
         if(!this.browser){
-          this.browser = await puppeteer.launch({headless: false, slowMo: 100});
+          this.browser = await puppeteer.launch({slowMo: 100});
         }
         return this.browser;
     }
@@ -87,7 +87,8 @@ class AffluentCrawler {
             await page.waitForSelector(requestPageParams.success.selector);
 
             // Filling request page parameters and submit.
-            await page.click(requestPageParams.fields.date_range.open_date_range.selector);
+            await page.click(requestPageParams.fields.date_range.open_date_range.selector); // NOTE: in some instances this fails - and works with puppeteer headless: false
+                                                                                            // Setting slowMo seems to help for now..
             await page.click(requestPageParams.fields.date_range.date_range_params.date_range_from.selector, {clickCount: 3}); // Simulate triple click to select all
             await page.type(requestPageParams.fields.date_range.date_range_params.date_range_from.selector, dateRangeFrom); // And then replace date
             await page.click(requestPageParams.fields.date_range.date_range_params.date_range_to.selector, {clickCount: 3}); // Simulate triple click to select all

@@ -24,7 +24,7 @@ const WEB_CONFIG = {
         captcha_required: false
     },
     resources: {
-        performance: { // https://publisher-dev.affluent.io/list?type=dates&startDate=2019-08-01&endDate=2019-08-30
+        performance: {
             type: 'performance',
             path: '/list?type=dates',
             paginable: true,
@@ -130,7 +130,8 @@ const WEB_CONFIG = {
                         epc: 'EPC',
                         impressions: 'impCount',
                         cr: 'CR'
-                }
+                },
+                dbTable: 'performance'
             }
             // TODO: add potential data transformation/normalization instructions (e.g.: truncate, string splits, string joins, symbol trim/s, etc, etc)
         }

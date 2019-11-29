@@ -19,7 +19,8 @@ const API_CONFIG = {
                     firstName: 'first_name',
                     lastName: 'last_name',
                     picture: 'avatar'
-                }
+                },
+                dbTable: 'users'
             }
             // TODO: add potential data transformation/normalization instructions (e.g.: truncate, string splits, string joins, symbol trim/s, etc, etc)
         }

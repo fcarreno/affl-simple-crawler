@@ -11,7 +11,7 @@ const db = require('./db');
     if(dataSource && resourceType) {
         console.log(`[${Date()}] - Crawling process requested for DATASOURCE=${dataSource} | RESOURCE TYPE=${resourceType}`);
         try{
-            let crawlResult;
+            let crawlResult, persistResult;
             switch(dataSource){
                 case 'reqres':
                     crawlResult = await reqres.crawl(resourceType, {pages});
@@ -27,24 +27,21 @@ const db = require('./db');
                     console.log(`[${Date()}] - No crawler available for DATA SOURCE. Please try with one of the supported ones.`);
                     return;
             }
-            console.log(`[${Date()}] - SUCCESS | Crawler result is: \r\n`, crawlResult);
+            console.log(`[${Date()}] - SUCCESS | Resources crawled are: \r\n`, crawlResult);
+            persistResult = await db.persistResourcesBulk(crawlResult, {dataSource, resourceType});
+            if(persistResult.success)
+                console.log(`[${Date()}] - SUCCESS | ${persistResult.resourcesCount} resources persisted to db`);
         }
         catch(err){
-            console.log(`[${Date()}] - ERROR occurred during crawling process\r\n`, err);
+            console.log(`[${Date()}] - ERROR occurred when crawling|persisting resources \r\n`, err);
+        }
+        finally{
+            process.exit(0);
         }
     }
     else{
         console.log('INVALID INPUT - Please provide --dataSource and --resourceType parameter values');
     }
-
-    //try {
-    //    let [users] = await db.query('SELECT * FROM USERS'); //
-    //    console.log(users)
-    // }
-    // catch(err){
-    //    console.log(err);
-    // }
-
 
 })();
 
