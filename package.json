@@ -1,0 +1,26 @@
+{
+  "name": "affl-simple-crawler",
+  "version": "1.0.0",
+  "description": "Simple Crawler Scripts Exercise",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fcarreno/affl-simple-crawler.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fcarreno/affl-simple-crawler/issues"
+  },
+  "homepage": "https://github.com/fcarreno/affl-simple-crawler#readme",
+  "dependencies": {
+    "minimist": "^1.2.0",
+    "mysql2": "^2.0.1",
+    "puppeteer": "^2.0.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5"
+  }
+}
