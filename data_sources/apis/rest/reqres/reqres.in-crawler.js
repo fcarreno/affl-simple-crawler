@@ -18,6 +18,7 @@ class ReqResCrawler {
             switch(resourceType){
                 case 'users':
                     crawlResult = await this._getUsers(crawlParams);
+                    break;
 
                 default:
                     throw Error(`No crawler available for requested RESOURCE TYPE=${resourceType}`);
@@ -30,7 +31,7 @@ class ReqResCrawler {
     }
 
     /** 
-     * * For simplicity, specifying start page is not supported when paginating responses (always start from 1).
+     * For simplicity, specifying start page is not supported when paginating responses (always start from 1).
     **/
     async _getUsers (crawlParams = {}){
 
