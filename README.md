@@ -19,6 +19,7 @@ Data Sources are pre-configured as part of the utility, so a different value tha
 
     For more details on config parameters/values, see [affluent-config.js](data_sources/websites/affluent/affluent-config.js) and [reqres.in-config.js](data_sources/apis/rest/reqres/reqres.in-config.js) files.
 
+OPTIONAL:
 
 * `pages`: Number (int) - Amount of pages that crawling process will attempt to get resources from.
 For the supported Data Sources, if # of pages specified is greater than the actual # of pages available, the process will stop and not attempt to retrieve more content/data.
