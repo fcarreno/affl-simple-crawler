@@ -41,7 +41,10 @@ For testing purposes, the crawler uses a specific range as default ==> `08/01/20
 ### SETUP & RUN
 
 1. Clone the repo
-2. `npm install` (install dependencies)
+2. `npm install` (install dependencies**)
 3. `node crawler.js --dataSource=[reqres|affluent] --resourceType=[users|performance]`.
 
    Example: node crawler.js --dataSource=affluent --resourceType=performance --pages=2
+
+
+** NOTE: keep in mind puppeteer (the tool used to crawl websites) download is 100+ Mb so installing the dependencies will take both - a bit of time and space.
